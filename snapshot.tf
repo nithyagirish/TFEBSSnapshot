@@ -1,4 +1,4 @@
-resource "aws_ebs_volume" "Name" {
+resource "aws_ebs_volume" "example" {
   availability_zone = "zone1"
   size              = "size1"
 
@@ -7,10 +7,10 @@ resource "aws_ebs_volume" "Name" {
   }
 }
 
-resource "aws_ebs_snapshot" "Name_snapshot" {
-  volume_id = "aws_ebs_volume.Name.id"
+resource "aws_ebs_snapshot" "example_snapshot" {
+  volume_id = aws_ebs_volume.example.id
 
   tags = {
-    Name = "ebs_snapshot"
+    Name = "ebsvolume_snapshot"
   }
 }
