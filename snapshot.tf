@@ -8,7 +8,7 @@ resource "aws_ebs_volume" "Name" {
 }
 
 resource "aws_ebs_snapshot" "Name_snapshot" {
-  volume_id = "volumeid1"
+  volume_id = "aws_ebs_volume.Name.id"
 
   tags = {
     Name = "ebs_snapshot"
