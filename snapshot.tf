@@ -1,6 +1,8 @@
 resource "aws_ebs_volume" "example" {
   availability_zone = "zone1"
   size              = "size1"
+  type              = "type1"
+  encrypted         = "true"
 
   tags = {
     Name = "ebsvolume"
