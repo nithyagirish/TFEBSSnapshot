@@ -1,18 +1,33 @@
-resource "aws_ebs_volume" "example" {
-  availability_zone = "zone1"
-  size              = "size1"
-  type              = "type1"
-  encrypted         = "true"
+data "aws_ebs_volume" "ebs_volume1" { 
 
-  tags = {
-    Name = "ebsvolume"
-  }
-}
+  filter { 
 
-resource "aws_ebs_snapshot" "example_snapshot" {
-  volume_id = aws_ebs_volume.example.id
+    name   = "volume-id" 
 
-  tags = {
-    Name = "ebsvolume_snapshot"
-  }
-}
+    values = ["vol-04a2cc478afd76042"] 
+
+  } 
+
+  filter { 
+
+    name   = "volume-type" 
+
+    values = ["gp2"] 
+
+  } 
+
+} 
+
+ 
+
+resource "aws_ebs_snapshot" "example_snapshot" { 
+
+  volume_id = "vol-04a2cc478afd76042" 
+
+  tags = { 
+
+    Name = "ebs-sample-snapshot" 
+
+  } 
+
+} 
